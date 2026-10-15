@@ -1,0 +1,19 @@
+{
+  "name": "very_raponu_school",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site de verificação Unopar",
+  "author": "Wanderson Paixão <wandersonpaixaomkt@gmail.com>",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wandersonpaixaomkt/very_raponu_school.git"
+  },
+  "homepage": "https://github.com/Wandersonpaixaomkt/very_raponu_school#readme",
+  "bugs": {
+    "url": "https://github.com/Wandersonpaixaomkt/very_raponu_school/issues"
+  },
+  "scripts": {
+    "start": "python3 servidor.py 8123"
+  }
+}
