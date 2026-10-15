@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verificação de documento</title>
+  <link rel="icon" type="image/svg+xml" href="../compartilhado/assets/img/ico.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Condensed:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../compartilhado/css/styles.css?v=4">
+</head>
+<body>
+  <header>
+    <section class="titulo">
+      <article class="brand">
+        <img src="../compartilhado/assets/img/ico.svg" alt="Logotipo: Verificação de documento" width="28" height="28">
+        <div>
+          <h3>Verificação de documento</h3>
+          <p>Valide sua assinatura digital</p>
+        </div>
+      </article>
+      <img class="lock" src="../compartilhado/assets/img/lock.svg" alt="Ambiente seguro" width="32" height="32">
+    </section>
+    <section class="faixa">
+      <img src="../compartilhado/assets/logos/Anhanguera.svg" alt="Anhanguera" style="--h:26px">
+      <img src="../compartilhado/assets/logos/Unopar.svg" alt="Unopar" style="--h:26px">
+      <img src="../compartilhado/assets/logos/Pitagoras.svg" alt="Pitágoras" style="--h:26px">
+      <img src="../compartilhado/assets/logos/Unic.svg" alt="Unic" style="--h:26px">
+      <img src="../compartilhado/assets/logos/Unime.svg" alt="Unime" style="--h:26px">
+      <img src="../compartilhado/assets/logos/Uniderp.svg" alt="Uniderp" style="--h:26px">
+      <img src="../compartilhado/assets/logos/Ampli.svg" alt="Ampli" style="--h:26px">
+    </section>
+  </header>
+
+  <main>
+    <form id="form-verificacao" class="card flex-center" novalidate>
+      <h1>Verifique seu documento</h1>
+      <section class="flex-center">
+        <p>Insira o código de validação do seu documento para validar a assinatura digital.</p>
+        <div class="campo">
+          <img class="campo-ico" src="../compartilhado/assets/img/ico-chave.png" alt="" width="20" height="17">
+          <input id="codigo" name="codigo" class="form-text" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" required
+                 placeholder="Digite aqui o código de validação do documento" aria-label="Código de validação do documento">
+        </div>
+        <button type="submit" class="btn btn-primary" id="btn-verificar">
+          <span class="btn-label">Verificar</span>
+          <svg class="seta" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="spinner" aria-hidden="true"></span>
+        </button>
+      </section>
+    </form>
+
+    <section id="resultado" class="card resultado" hidden aria-live="polite"></section>
+
+    <p class="link-historico"><a href="../historico/index.html">Histórico de consultas</a></p>
+  </main>
+
+  <script src="js/config.js?v=5"></script>
+  <script src="js/app.js?v=4"></script>
+</body>
+</html>

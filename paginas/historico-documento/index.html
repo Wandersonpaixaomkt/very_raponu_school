@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Histórico</title>
+  <link rel="icon" type="image/svg+xml" href="../compartilhado/assets/img/ico.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Condensed:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../compartilhado/css/styles.css?v=4">
+  <link rel="stylesheet" href="resultado.css">
+</head>
+<body>
+  <header>
+    <section class="titulo">
+      <article class="brand">
+        <img src="../compartilhado/assets/img/ico.svg" alt="Logotipo: Verificação de documento" width="28" height="28">
+        <div>
+          <h3>Verificação de documento</h3>
+          <p>Valide sua assinatura digital</p>
+        </div>
+      </article>
+      <img class="lock" src="../compartilhado/assets/img/lock.svg" alt="Ambiente seguro" width="32" height="32">
+    </section>
+    <section class="faixa">
+      <img src="../compartilhado/assets/logos/Anhanguera.svg" alt="Anhanguera" style="--h:26px">
+      <img src="../compartilhado/assets/logos/Unopar.svg" alt="Unopar" style="--h:26px">
+      <img src="../compartilhado/assets/logos/Pitagoras.svg" alt="Pitágoras" style="--h:26px">
+      <img src="../compartilhado/assets/logos/Unic.svg" alt="Unic" style="--h:26px">
+      <img src="../compartilhado/assets/logos/Unime.svg" alt="Unime" style="--h:26px">
+      <img src="../compartilhado/assets/logos/Uniderp.svg" alt="Uniderp" style="--h:26px">
+      <img src="../compartilhado/assets/logos/Ampli.svg" alt="Ampli" style="--h:26px">
+    </section>
+  </header>
+
+
+  <main class="res-main">
+    <a class="voltar" href="../verificacao/index.html">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 12H5M11 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Verificar novo documento
+    </a>
+
+    <article class="res-card">
+      <div class="res-topo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M28 14.8V16a12 12 0 1 1-7.1-10.97" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M11 15l5 5L28 8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h1>Documento e assinatura digital válida</h1>
+      </div>
+
+      <div class="res-corpo">
+        <h2>Detalhes do documento</h2>
+        <div class="box">
+          <p class="linha">
+            <span>Identificação do documento: <b id="doc-nome">Atestado de Conclusão de Curso</b></span>
+            <span>Código de validação do documento: <b id="doc-codigo">C10FA475-C9FF-4959-B7C9-B0040A35C5CF</b></span>
+          </p>
+          <div class="baixar">
+            <div>
+              <h3>Veja o documento assinado e validado</h3>
+              <small id="doc-disp">Disponível até 00/00/0000</small>
+            </div>
+            <button type="button" class="btn btn-primary" id="btn-download">Download documento</button>
+          </div>
+        </div>
+
+        <h2>Assinaturas</h2>
+        <div class="box assinatura">
+          <b class="nome" id="ass-nome">RAFAEL LEME</b>
+          <span>Cargo : <b id="ass-cargo">00000 00 0000000</b></span>
+          <span>CPF : <b id="ass-cpf">000.***.***-00</b></span>
+          <span>Assinou em: <b id="ass-data">00/00/0000</b></span>
+          <span>Válida até: <b id="ass-ate">00/00/0000</b></span>
+        </div>
+
+        <p class="aviso-legal">
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#004ecc"/><rect x="11" y="10.5" width="2" height="6.5" rx="1" fill="#fff"/><circle cx="12" cy="7.5" r="1.2" fill="#fff"/></svg>
+          Assinatura digital e eletrônica têm validade jurídica prevista pelo artigo 10 da Medida Provisória nº 2.200/2001.
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <script src="../verificacao/js/config.js?v=5"></script>
+  <script>
+    (function () {
+      var cfg = window.VERIFICACAO_CONFIG || {};
+      var codigo = new URLSearchParams(window.location.search).get("codigo");
+      var voltar = function () { window.location.replace("../verificacao/index.html"); };
+      if (!codigo) return voltar();
+
+      function data(v) {
+        var d = new Date(v);
+        return isNaN(d) ? (v ? String(v) : "—") : d.toLocaleDateString("pt-BR", { timeZone: "UTC" });
+      }
+      function set(id, txt) { document.getElementById(id).textContent = txt; }
+
+      var arquivo = null;
+
+      function preencher(d) {
+        if (!d || !d.valido) return voltar();
+        arquivo = d.arquivo || null;
+        set("doc-nome", d.documento);
+        set("doc-codigo", codigo);
+        set("doc-disp", "Disponível até " + data(d.disponivelAte));
+        set("ass-nome", d.signatario);
+        set("ass-cargo", d.cargo);
+        set("ass-cpf", d.cpf);
+        set("ass-data", data(d.assinadoEm));
+        set("ass-ate", data(d.validaAte));
+      }
+
+      if (cfg.API_URL) {
+        fetch(cfg.API_URL + "?codigo=" + encodeURIComponent(codigo), { headers: { Accept: "application/json" } })
+          .then(function (r) { return r.ok ? r.json() : { valido: false }; })
+          .then(preencher, voltar);
+      } else {
+        preencher((cfg.DEMO_DOCS || {})[codigo]);
+      }
+
+      document.getElementById("btn-download").addEventListener("click", function () {
+        if (!arquivo) {
+          alert("Este documento não tem arquivo vinculado. Preencha o campo \"arquivo\" no config.js (ou a URL do PDF retornada pela API).");
+          return;
+        }
+        var url = new URL(arquivo, window.location.href).href;
+        var nome = decodeURIComponent(url.split("?")[0].split("/").pop());
+
+        function salvar(href, liberar) {
+          var a = document.createElement("a");
+          a.href = href;
+          a.download = nome;
+          a.target = "_blank"; // se o navegador abrir o arquivo, abre em outra aba e esta página continua aberta
+          a.rel = "noopener";
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          if (liberar) setTimeout(function () { URL.revokeObjectURL(href); }, 1000);
+        }
+
+        // Baixa como blob: força o download mesmo se o navegador abriria o PDF.
+        fetch(url)
+          .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.blob(); })
+          .then(function (b) { salvar(URL.createObjectURL(new Blob([b], { type: "application/octet-stream" })), true); })
+          .catch(function () { salvar(url, false); });
+      });
+    })();
+  </script>
+</body>
+</html>

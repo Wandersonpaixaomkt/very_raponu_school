@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Histórico de consultas</title>
+  <link rel="icon" type="image/svg+xml" href="../compartilhado/assets/img/ico.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Condensed:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../compartilhado/css/styles.css?v=4">
+  <link rel="stylesheet" href="historico.css">
+</head>
+<body>
+  <header>
+    <section class="titulo">
+      <article class="brand">
+        <img src="../compartilhado/assets/img/ico.svg" alt="Logotipo: Verificação de documento" width="28" height="28">
+        <div>
+          <h3>Verificação de documento</h3>
+          <p>Valide sua assinatura digital</p>
+        </div>
+      </article>
+      <img class="lock" src="../compartilhado/assets/img/lock.svg" alt="Ambiente seguro" width="32" height="32">
+    </section>
+    <section class="faixa">
+      <img src="../compartilhado/assets/logos/Anhanguera.svg" alt="Anhanguera" style="--h:26px">
+      <img src="../compartilhado/assets/logos/Unopar.svg" alt="Unopar" style="--h:26px">
+      <img src="../compartilhado/assets/logos/Pitagoras.svg" alt="Pitágoras" style="--h:26px">
+      <img src="../compartilhado/assets/logos/Unic.svg" alt="Unic" style="--h:26px">
+      <img src="../compartilhado/assets/logos/Unime.svg" alt="Unime" style="--h:26px">
+      <img src="../compartilhado/assets/logos/Uniderp.svg" alt="Uniderp" style="--h:26px">
+      <img src="../compartilhado/assets/logos/Ampli.svg" alt="Ampli" style="--h:26px">
+    </section>
+  </header>
+
+  <main class="hist-main">
+    <a class="voltar" href="../verificacao/index.html">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 12H5M11 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Verificar novo documento
+    </a>
+
+    <article class="hist-card">
+      <div class="hist-topo">
+        <h1>Histórico de consultas</h1>
+        <button type="button" class="btn btn-sec" id="btn-limpar">Limpar histórico</button>
+      </div>
+
+      <div class="hist-corpo">
+        <p class="hist-vazio" id="vazio" hidden>Nenhuma consulta realizada ainda.</p>
+        <div class="tabela-wrap" id="tabela-wrap" hidden>
+          <table class="tabela">
+            <thead>
+              <tr><th>Data e hora</th><th>Código de validação</th><th>Resultado</th><th></th></tr>
+            </thead>
+            <tbody id="linhas"></tbody>
+          </table>
+        </div>
+        <p class="hist-nota">As consultas ficam salvas apenas neste navegador.</p>
+      </div>
+    </article>
+  </main>
+
+  <script src="historico.js"></script>
+</body>
+</html>

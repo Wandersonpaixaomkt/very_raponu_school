@@ -1,0 +1,92 @@
+:root {
+  --verde: #00855f;
+  --painel: #f1f5f9;
+  --azul-titulo: #004ecc;
+}
+
+.demo-aviso {
+  padding: 8px 32px 0;
+  color: rgb(255, 255, 255);
+  font-size: 11px;
+  text-align: center;
+}
+
+.res-main { max-width: none; padding: 0 12px 32px; }
+
+.voltar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 20px 8px 28px;
+  color: var(--azul-titulo);
+  font: 700 16px "Roboto Condensed", Roboto, sans-serif;
+  text-decoration: none;
+}
+.voltar:hover { text-decoration: underline; }
+
+.res-card {
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.res-topo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 24px;
+  background: #f4f8fb;
+  border-bottom: 1px solid var(--borda);
+  color: var(--verde);
+}
+.res-topo h1 { margin: 0; font: 500 20px "Roboto Condensed", Roboto, sans-serif; font-size: 22px; font-weight: 700; }
+
+.res-corpo { padding: 24px; }
+.res-corpo h2 {
+  margin: 0 0 12px;
+  font: 700 18px "Roboto Condensed", Roboto, sans-serif;
+  color: var(--azul-titulo);
+}
+.res-corpo h2:not(:first-child) { margin-top: 36px; }
+
+.box {
+  padding: 16px;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  font-family: "Roboto Condensed", Roboto, sans-serif;
+}
+.box b { font-weight: 700; }
+.linha { display: flex; flex-wrap: wrap; gap: 8px 48px; margin: 0 0 16px; padding: 0 0 0 0; color: var(--texto); }
+
+.baixar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 24px;
+  background: var(--painel);
+  border-radius: 8px;
+}
+.baixar h3 { margin: 0 0 6px; font-size: 18px; font-weight: 500; color: var(--texto-2); }
+.baixar small { font-size: 13px; font-weight: 700; color: var(--verde); }
+.baixar .btn { height: 42px; flex: none; }
+
+.assinatura { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 48px; padding: 24px 16px; }
+.assinatura .nome { margin-right: 8px; }
+
+.aviso-legal {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 36px 0 0;
+  padding: 18px 16px;
+  background: var(--painel);
+  border-radius: 8px;
+  color: var(--texto-2);
+  font-family: "Roboto Condensed", Roboto, sans-serif;
+}
+
+@media (max-width: 640px) {
+  .res-corpo { padding: 16px; }
+  .baixar { flex-direction: column; align-items: flex-start; }
+  .assinatura { gap: 8px 24px; }
+}
